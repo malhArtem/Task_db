@@ -5,8 +5,8 @@ import sqlite3
 
 class DB:
     def __init__(self):
-        self.db = sqlite3.connect("forms.db")
-        self.cursor = self.db.cursor()
+        self.db = sqlite3.connect("forms.db")  # поделючение к базе данных (создается файл, если его нет)
+        self.cursor = self.db.cursor() # эта штука для взаимодействия с бд
 
 
     def create_table_users(self):
@@ -18,7 +18,7 @@ class DB:
                 last_name TEXT,
                 date DATE)
         """)
-        self.db.commit()
+        self.db.commit() # коммит для сохранение имзенений БД
 
 
     def add_user(self, username, first_name, last_name):
