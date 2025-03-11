@@ -24,9 +24,9 @@ class DB:
     def add_user(self, username, first_name, last_name):
         self.cursor.execute("""
             INSERT INTO users (username, first_name, last_name, date)
-            VALUES (?, ?, ?, ?)
+            VALUES (?, ?, ?, ?) # вместо знаков вопроса подставлюятся значения, которые переданны ниже
         """,
-    (username, first_name, last_name, datetime.datetime.now()))
+    (username, first_name, last_name, datetime.datetime.now())) # вот эти значение, которые подставляются вместо знаков вопроса
         self.db.commit()
 
 
