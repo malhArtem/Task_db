@@ -5,7 +5,7 @@ import sqlite3
 
 class DB:
     def __init__(self):
-        self.db = sqlite3.connect("forms.db")  # поделючение к базе данных (создается файл, если его нет)
+        self.db = sqlite3.connect("name.db")  # поделючение к базе данных "name.db" - название базы данных (создается файл "name.db", если его нет)
         self.cursor = self.db.cursor() # эта штука для взаимодействия с бд
 
 
