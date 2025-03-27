@@ -1,26 +1,50 @@
 import sqlite3
-# import pymysql
-# import mysql-connector
 
-# python get-pip.py
 
 connect = sqlite3.connect("database.db")
-# connect = pymysql.connect(host='localhost', 
-#                             user="root", 
-#                             password="password", 
-#                             database="")
 
-# cursor = connect.cursor()
-# cursor = connect.cursor()
-# cursor.execute("INSERT users(name=?, lastname=?)", (name, lastname))
-# connect.commit()
-# cursor.execute("SELECT * FROM users WHERE name=?", 
-#                 (name,))
+cursor = connect.cursor()
 
-# result = cursor.fetchall() 
-# result1 = cursor.fetchmany(10)
-# result2 = cursor.fetchone()
+def create_tables():
+    cursor.execute("""CREATE TABLE IF NOT EXISTS users(
+                    id INTEGER PRIMARY KEY,
+                    name TEXT,
+                    lastname TEXT,
+                    age INTEGER
+                    )""")
+    connect.commit()
 
-# name = "Иван"
 
-# print(f"Моё имя не {name}")
+def add_user(name, lastname, age):
+    cursor.execute("INSERT INTO users(name=?, lastname=?, age=?)", (name, lastname, age))
+    connect.commit()
+
+
+def get_all():
+    cursor.execute("SELECT * FROM users")
+    users = cursor.fetchall()
+    return users
+
+
+def get_users_by_id(id: int):
+    cursor.execute("SELECT * FROM users WHERE id=?", (id,))
+    user = cursor.fetchone()
+    return user
+
+
+def update_user():
+    pass
+
+
+def delete_user():
+    pass
+
+
+
+
+
+connect.commit()
+cursor.execute("SELECT * FROM users WHERE name=?", 
+                (name,))
+
+
