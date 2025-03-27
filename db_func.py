@@ -43,8 +43,4 @@ def delete_user():
 
 
 
-connect.commit()
-cursor.execute("SELECT * FROM users WHERE name=?", 
-                (name,))
-
 
